@@ -65,16 +65,10 @@ public class BoxBody : MonoBehaviour  {
 
         print(width.ToString()+"x"+height.ToString());
 
-        print("extedns:"+spr.bounds.extents.ToString());
-        print("size:" + spr.bounds.size.ToString());
-        print("center:" + spr.bounds.center.ToString());
+    //    print("extedns:"+spr.bounds.extents.ToString());
+    //    print("size:" + spr.bounds.size.ToString());
+    //    print("center:" + spr.bounds.center.ToString());
 
-     //   print("angle :" + transform.rotation.eulerAngles.z.ToString());
-
-      //  width=spr.bounds.extents.x;
-     //   height=spr.bounds.extents.y;
-
-      //  rotation = Random.RandomRange(0, 360);
 
         if (uworld != null)
         {
@@ -88,8 +82,7 @@ public class BoxBody : MonoBehaviour  {
         //    shape.SetAsBox(width / 2, height / 2, new Vector2(0, 0),  MathUtils.DegreeToRadian(rotation));//transform.rotation.eulerAngles.z));// MathUtils.RadianToDegree(48));//transform.rotation.eulerAngles.z-90));// transform.rotation.eulerAngles.z/Mathf.Deg2Rad);
 
 
-         //   transform.rotation = Quaternion.AngleAxis(rotation, Vector3.forward);
-
+      
             FixtureDef fd = new FixtureDef();
 
             fd.friction=friction;

@@ -55,8 +55,7 @@ public class CircleBody : MonoBehaviour {
         width = spr.sprite.rect.width / 100f * transform.localScale.x;
         height = spr.sprite.rect.height / 100f * transform.localScale.y;
 
-        //width = spr.bounds.size.x;
-        //height = spr.bounds.size.y;
+
 
         rad = (width / 2 + height / 2) / 2;
 
