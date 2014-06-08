@@ -32,6 +32,16 @@ namespace Box2D
 {
     public static class MathUtils
     {
+
+        public static float DegreeToRadian(float angle)
+        {
+            return (float)Math.PI * angle / 180.0f;
+        }
+        public static float RadianToDegree(float angle)
+        {
+            return angle * (float)(180.0f / Math.PI);
+        }
+
         public static float Cross(Vector2 a, Vector2 b)
         {
             return a.x * b.y - a.y * b.x;

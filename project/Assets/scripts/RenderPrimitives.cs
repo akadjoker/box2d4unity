@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Box2D;
-
+[AddComponentMenu("Box2DUnity/Debug World Component")]
 public class RenderPrimitives : MonoBehaviour {
 
     private Material lineMaterial = null;
-    private  UWorld uw;
+   // private  UWorld uw;
     private  Vector2 f = new Vector2();
     private  Vector2 v = new Vector2();
     private  Vector2 lv = new Vector2();
     public bool debugEditor = true;
     public bool debug=true;
+    protected World world;
 
     private void setColor(Color color)
     {
@@ -127,9 +128,9 @@ public class RenderPrimitives : MonoBehaviour {
     void OnDrawGizmos()
     {
         if (!debugEditor) return;
-        if (uw != null)
+        if (world != null)
         {
-            for (Body body = uw.world.GetBodyList(); body != null; body = body._next)
+            for (Body body = world.GetBodyList(); body != null; body = body._next)
             {
                 Box2D.Transform xf;
                 body.GetTransform(out xf);
@@ -145,14 +146,11 @@ public class RenderPrimitives : MonoBehaviour {
     }
 
 
-   void Awake()
-   {
-        uw = Camera.main.GetComponent<UWorld>();
-
-	
-   }
     void Start()
     {
+        //uworld = Camera.main.GetComponent<UWorld>();
+        world = UWorld.PhysicsWorld;
+
         CreateMaterial();
     
     }
@@ -169,11 +167,13 @@ public class RenderPrimitives : MonoBehaviour {
     void OnPostRender()
     {
         if (!debug) return;
-        Bind();
-        GL.PushMatrix();
-   //     DrawLine(new Vector2(0, 0), new Vector2(480, 320), new Color(1f, 1f, 0f));
-        uw.world.DrawDebugData();
-        GL.PopMatrix();
+        if (world != null)
+        {
+            Bind();
+            GL.PushMatrix();
+            world.DrawDebugData();
+            GL.PopMatrix();
+        }
     }
 
 
